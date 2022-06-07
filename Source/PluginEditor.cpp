@@ -105,12 +105,16 @@ TistortionAudioProcessorEditor::~TistortionAudioProcessorEditor()
 //==============================================================================
 void TistortionAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (juce::Colours::tomato);
+
+    
+    pluginBG = juce::ImageCache::getFromMemory(BinaryData::bg_jpeg,BinaryData::bg_jpegSize);
+    g.drawImageWithin(pluginBG, 0, 0, AudioProcessorEditor::getWidth(), AudioProcessorEditor::getHeight(), juce::RectanglePlacement::stretchToFit);
+//    g.fillAll (juce::Colours::tomato);
 
     g.setColour (juce::Colours::white);
     g.setFont (15.0f);
     g.drawFittedText ("Tistortion by Twina", getLocalBounds(), juce::Justification::centredTop, 1);
+    
 }
 
 void TistortionAudioProcessorEditor::resized()

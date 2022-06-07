@@ -184,7 +184,7 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
     
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+    buffer.clear (i, 0, buffer.getNumSamples());
     updateFilters();
 
     juce::dsp::AudioBlock<float> block (buffer);
@@ -268,14 +268,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout TistortionAudioProcessor:: c
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
     
     params.push_back(std::make_unique<juce::AudioParameterFloat>("DRIVE", "Drive", 0.f, 1.f, 0.2f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("RANGE", "Range", 1.f, 3000.f, 3.f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("BLEND", "Blend", 0.f, 1.f, 0.6f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("RANGE", "Range", 1.f, 2000.f, 3.f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("VOLUME", "Volume", 0.f, 1.f, 0.999f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("LOWCUT", "LowCut", 20.f, 1400.f, 250.f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("HIGHCUT", "HighCut", 2000.f, 20000.f, 18000.f));
 
-    params.push_back(std::make_unique<juce::AudioParameterChoice>("DIST", "Dist", StringArray ("Pi", "Pi2", "Tanh"),0));
-    
     return {params.begin(), params.end()};
 }
 

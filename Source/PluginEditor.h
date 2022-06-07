@@ -30,7 +30,7 @@ public:
 private:
     KnobDesign knobDesign;
 
-    
+    juce::Image pluginBG;
     TSlider driveSlider, rangeSlider, volumeSlider, cutOffSlider, highCutSlider;
     juce::Label driveLabel, rangeLabel, volumeLabel, cutOffLabel, highCutLabel;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveSliderAttachment,rangeSliderAttachment,blendSliderAttachment,volumeSliderAttachment,cutOffSliderAttachment,highCutSliderAttachment;

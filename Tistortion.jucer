@@ -9,14 +9,13 @@
             file="Source/PluginProcessor.cpp"/>
       <FILE id="N1GENi" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="Uos6Y9" name="DistType.cpp" compile="1" resource="0" file="Source/DistType.cpp"/>
-      <FILE id="xYrW1i" name="DistType.h" compile="0" resource="0" file="Source/DistType.h"/>
       <FILE id="rMWYDP" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="ZOei8g" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="aSDdHs" name="KnobDesign.h" compile="0" resource="0" file="Source/KnobDesign.h"/>
       <FILE id="bYfYJw" name="TSlider.h" compile="0" resource="0" file="Source/TSlider.h"/>
     </GROUP>
+    <FILE id="QWIcD2" name="bg.jpeg" compile="0" resource="1" file="bg.jpeg"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>
