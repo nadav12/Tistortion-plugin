@@ -31,11 +31,10 @@ private:
     KnobDesign knobDesign;
 
     
-    TSlider driveSlider, rangeSlider, blendSlider, volumeSlider, cutOffSlider, highCutSlider;
-    ComboBox distType;
-    juce::Label driveLabel, rangeLabel, blendLabel, volumeLabel, cutOffLabel, highCutLabel;
+    TSlider driveSlider, rangeSlider, volumeSlider, cutOffSlider, highCutSlider;
+    juce::Label driveLabel, rangeLabel, volumeLabel, cutOffLabel, highCutLabel;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveSliderAttachment,rangeSliderAttachment,blendSliderAttachment,volumeSliderAttachment,cutOffSliderAttachment,highCutSliderAttachment;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment> distTypeAttachment;
+
     
 
     TistortionAudioProcessor& audioProcessor;  

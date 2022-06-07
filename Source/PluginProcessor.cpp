@@ -176,15 +176,12 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     
     auto drive = apvts.getRawParameterValue("DRIVE");
     auto range = apvts.getRawParameterValue("RANGE");
-    auto blend = apvts.getRawParameterValue("BLEND");
     auto volume = apvts.getRawParameterValue("VOLUME");
-    auto distType = apvts.getRawParameterValue("DIST");
-    
+  
     float driver = drive->load();
-       float ranger = range->load();
-       float blender = blend->load();
-       float volumer = volume->load();
-    float type = distType->load();
+    float ranger = range->load();
+    float volumer = volume->load();
+
     
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
@@ -208,13 +205,11 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
         for(int sample = 0; sample < buffer.getNumSamples(); sample ++)
         {
-            auto cleanSignal = buffer.getSample(channel, sample);
-            
-            cleanSignal *= (1.0f - blender);
+
             channelData[sample] *= (driver * ranger);
 
             auto drivenSignal = 2.0f / M_PI * atan(M_PI/2.0f * channelData[sample]);
-            channelData[sample] = (drivenSignal * blender + cleanSignal) * 0.5f * volumer;
+            channelData[sample] = drivenSignal * 0.5f * volumer;
 
         }
         

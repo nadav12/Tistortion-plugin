@@ -43,18 +43,7 @@ TistortionAudioProcessorEditor::TistortionAudioProcessorEditor (TistortionAudioP
     
     rangeSliderAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "RANGE", rangeSlider);
     //===============================================================================================================
-    //blend
 
-    blendSlider.setLookAndFeel(&knobDesign);
-
-    addAndMakeVisible(blendSlider);
-    
-    addAndMakeVisible (blendLabel);
-    blendLabel.setText ("Blend", juce::dontSendNotification);
-    blendLabel.attachToComponent (&blendSlider, false);
-    blendLabel.setJustificationType(juce::Justification::centredBottom);
-    
-    blendSliderAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "BLEND", blendSlider);
     //===============================================================================================================
     //volume
 
@@ -102,13 +91,6 @@ TistortionAudioProcessorEditor::TistortionAudioProcessorEditor (TistortionAudioP
 
      //===============================================================================================================
     
-    distType.addItem("Pi", 1);
-    distType.addItem("Pi2", 2);
-    distType.addItem("Tanh", 3);
-    addAndMakeVisible(distType);
-    distTypeAttachment = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(audioProcessor.apvts, "DIST", distType);
-    
-    
     
     setResizable(true, true);
     
@@ -148,12 +130,10 @@ void TistortionAudioProcessorEditor::resized()
 
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, driveSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, rangeSlider));
-    flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, blendSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, volumeSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, cutOffSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, highCutSlider));
 
-    flexbox.items.add(juce::FlexItem(200, 120, distType));
     flexbox.performLayout(bounds);
 
 }
