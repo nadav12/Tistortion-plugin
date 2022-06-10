@@ -13,9 +13,11 @@
             file="Source/PluginEditor.cpp"/>
       <FILE id="ZOei8g" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
       <FILE id="aSDdHs" name="KnobDesign.h" compile="0" resource="0" file="Source/KnobDesign.h"/>
+      <FILE id="cvqj5q" name="TLabel.h" compile="0" resource="0" file="Source/TLabel.h"/>
       <FILE id="bYfYJw" name="TSlider.h" compile="0" resource="0" file="Source/TSlider.h"/>
     </GROUP>
     <FILE id="QWIcD2" name="bg.jpeg" compile="0" resource="1" file="bg.jpeg"/>
+    <FILE id="CzHDGW" name="bg.png" compile="0" resource="1" file="bg.png"/>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <EXPORTFORMATS>

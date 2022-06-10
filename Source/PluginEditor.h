@@ -12,7 +12,7 @@
 #include "PluginProcessor.h"
 #include "KnobDesign.h"
 #include "TSlider.h"
-
+#include "TLabel.h"
 
 
 //==============================================================================
@@ -32,7 +32,8 @@ private:
 
     juce::Image pluginBG;
     TSlider driveSlider, rangeSlider, volumeSlider, cutOffSlider, highCutSlider;
-    juce::Label driveLabel, rangeLabel, volumeLabel, cutOffLabel, highCutLabel;
+    TLabel driveLabel, rangeLabel, volumeLabel, cutOffLabel, highCutLabel;
+//    juce::Label driveLabel, rangeLabel, volumeLabel, cutOffLabel, highCutLabel;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> driveSliderAttachment,rangeSliderAttachment,blendSliderAttachment,volumeSliderAttachment,cutOffSliderAttachment,highCutSliderAttachment;
 
     
