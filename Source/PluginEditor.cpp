@@ -87,8 +87,13 @@ TistortionAudioProcessorEditor::TistortionAudioProcessorEditor (TistortionAudioP
 //   highCutSlider.setSkewFactorFromMidPoint(1200.0);
 
      //===============================================================================================================
+    curveSlider.setLookAndFeel(&knobDesign);
+    addAndMakeVisible(curveSlider);
+    addAndMakeVisible (curveLabel);
+    curveLabel.setText ("Curve", juce::dontSendNotification);
+    curveLabel.attachToComponent (&curveSlider, false);
     
-    
+    curveSliderAttachment = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.apvts, "CURVE", curveSlider);
 //    setResizable(true, true);
 //
 //    setResizeLimits(400, 400, 800, 1000);
@@ -135,6 +140,7 @@ void TistortionAudioProcessorEditor::resized()
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, rangeSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, volumeSlider));
     flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, cutOffSlider));
+    flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, curveSlider));
 //    flexbox.items.add(juce::FlexItem(knobHeight, knobWidth, highCutSlider));
 
     flexbox.performLayout(bounds);

@@ -177,10 +177,12 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     auto drive = apvts.getRawParameterValue("DRIVE");
     auto range = apvts.getRawParameterValue("RANGE");
     auto volume = apvts.getRawParameterValue("VOLUME");
+    auto curve = apvts.getRawParameterValue("CURVE");
   
     float driver = drive->load();
     float ranger = range->load();
     float volumer = volume->load();
+    float curver = curve->load();
 
     
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
@@ -208,7 +210,7 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
             channelData[sample] *= (driver * ranger);
 
-            auto drivenSignal = 2.0f / M_PI * atan(M_PI/2.0f * channelData[sample]);
+            auto drivenSignal = 2.0f / M_PI * atan(M_PI/curver * channelData[sample]);
             channelData[sample] = drivenSignal * 0.5f * volumer;
 
         }
@@ -244,7 +246,9 @@ void TistortionAudioProcessor::setStateInformation (const void* data, int sizeIn
 
     if (xmlState.get() != nullptr)
         if (xmlState->hasTagName (apvts.state.getType()))
-            apvts.replaceState (juce::ValueTree::fromXml (*xmlState));
+        apvts.replaceState (juce::ValueTree::fromXml (*xmlState));
+
+
 }
 
 void TistortionAudioProcessor::reset()
@@ -272,7 +276,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout TistortionAudioProcessor:: c
     params.push_back(std::make_unique<juce::AudioParameterFloat>("VOLUME", "Volume", 0.f, 1.f, 0.999f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("LOWCUT", "LowCut", 20.f, 1400.f, 250.f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("HIGHCUT", "HighCut", 2000.f, 20000.f, 18000.f));
-
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("CURVE", "Curve", 0.1f, 2.f, 1.5f));
     return {params.begin(), params.end()};
 }
 
