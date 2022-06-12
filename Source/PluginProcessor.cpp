@@ -210,8 +210,8 @@ void TistortionAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
             channelData[sample] *= (driver * ranger);
 
-            auto drivenSignal = 2.0f / M_PI * atan(M_PI/curver * channelData[sample]);
-            channelData[sample] = drivenSignal * 0.5f * volumer;
+            auto drivenSignal = 2.0f / M_PI * atan(M_PI/(1-curver) * channelData[sample]);
+            channelData[sample] = drivenSignal * volumer;
 
         }
         
@@ -272,11 +272,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout TistortionAudioProcessor:: c
     std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
     
     params.push_back(std::make_unique<juce::AudioParameterFloat>("DRIVE", "Drive", 0.f, 1.f, 0.2f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("RANGE", "Range", 1.f, 2000.f, 3.f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("RANGE", "Range", 1.f, 150.f, 40.f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("VOLUME", "Volume", 0.f, 1.f, 0.999f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("LOWCUT", "LowCut", 20.f, 1400.f, 250.f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("LOWCUT", "LowCut", 20.f, 600.f, 250.f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>("HIGHCUT", "HighCut", 2000.f, 20000.f, 18000.f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>("CURVE", "Curve", 0.1f, 2.f, 1.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>("CURVE", "Curve", 0.f, 0.9f, 0.5f));
     return {params.begin(), params.end()};
 }
 

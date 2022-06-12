@@ -124,11 +124,11 @@ void TistortionAudioProcessorEditor::resized()
 {
     juce::Rectangle<int> bounds = getLocalBounds().removeFromBottom(325);
     bounds = bounds.removeFromTop(300);
-    int knobHeight = 120;
-    int knobWidth = 120;
+    int knobHeight = 80;
+    int knobWidth = 80;
     
-//    int knobHeight = jlimit(100, 160, getParentHeight()/5);
-//    int knobWidth = jlimit(100, 160, getParentWidth()/5);
+//    int knobHeight = jlimit(100, 100, getParentHeight()/5);
+//    int knobWidth = jlimit(100, 100, getParentWidth()/5);
 
     juce::FlexBox flexbox;
     flexbox.flexDirection = juce::FlexBox::Direction::row;
